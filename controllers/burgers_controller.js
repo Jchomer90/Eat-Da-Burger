@@ -5,7 +5,8 @@ let router = express.Router();
 let burger = require("../models/burgerModel.js");
 
 router.get("/", function(req, res) {
-    burger.all(function(data) {
+    burger.selectAll(function(data) {
+        console.log({data_controller:data, data_controller_res:res})
         let burgerObj = {
             burgers: data
         };
@@ -15,7 +16,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req,res) {
-    burger.create([
+    burger.insertOne([
         "burgerName", "devoured"
     ], [
         req.body.burger_name, req.body.devoured
@@ -29,7 +30,7 @@ router.put("/", function (req, res) {
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
-    burger.update({
+    burger.updateOne({
         burger_name: req.body.newBurgerName
     }, condition, function(result) {
         if (result.changedRows == 0) {
