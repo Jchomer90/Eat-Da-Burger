@@ -2,7 +2,7 @@ const express = require("express");
 
 let router = express.Router();
 
-const burger = require("../models/burger.js");
+let burger = require("../models/burgerModel.js");
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req,res) {
     burger.create([
-        "burger_name", "devoured"
+        "burgerName", "devoured"
     ], [
         req.body.burger_name, req.body.devoured
     ], function(result) {
@@ -41,10 +41,10 @@ router.put("/", function (req, res) {
     });
 });
 
-router.delete("/api/burgers/:id", function(req, res) {
-    burgers.delete(req.params.id, function() {
-        res.redirect("/api/burgers");
-    })
-});
+// router.delete("/api/burgers/:id", function(req, res) {
+//     burgers.delete(req.params.id, function() {
+//         res.redirect("/api/burgers");
+//     })
+// });
 
 module.exports = router;
