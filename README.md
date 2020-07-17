@@ -30,7 +30,7 @@ Once the user chooses to devour the burger, it will render on the right side of 
 
   ## Usage
   
-  [Deployed Link]
+  [Deployed Link](https://eat-da-burger8.herokuapp.com/)
 
   ## License
 
